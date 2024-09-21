@@ -1,5 +1,2 @@
-import { startStimulusApp } from '@symfony/stimulus-bundle';
+//remove Stimulus-related code we are going to use React instead
 
-const app = startStimulusApp();
-// register any custom, 3rd party controllers here
-// app.register('some_controller_name', SomeImportedController);
