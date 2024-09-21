@@ -8,3 +8,12 @@ import '../bootstrap.js';
 import '../styles/app.css';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function App() {
+    return <h1>Welcome to Quizalaxy!</h1>;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
