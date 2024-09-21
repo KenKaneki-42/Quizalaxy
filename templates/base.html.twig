@@ -10,10 +10,10 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
+        <div id="root"></div>
         {% block body %}{% endblock %}
     </body>
 </html>
