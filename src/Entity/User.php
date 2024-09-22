@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -94,6 +95,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTime();
+    }
+
+    // Callbacks called before and after an entity is updated
+    #[ORM\PreUpdate]
+    public function updateUpdatedAtValue(): void
+    {
         $this->updatedAt = new DateTime();
     }
 
@@ -209,13 +217,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUpdatedAt(): ?DateTime
     {
         return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(): static
-    {
-        $this->updatedAt = new DateTime();
-
-        return $this;
     }
 
     /**
