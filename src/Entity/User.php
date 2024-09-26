@@ -26,28 +26,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: false, unique: true)]
-    #[Assert\NotBlank(message: "L'adresse email est obligatoire.", groups: ['profile'])]
+    #[Assert\NotBlank(message: "L'adresse email est obligatoire.", groups: ['default'])]
     #[Assert\Length(
         min: 6,
         max: 255,
         minMessage: "Votre adresse email doit contenir au moins {{ limit }} caractères.",
         maxMessage: "Votre adresse email ne peut pas contenir plus de {{ limit }} caractères.",
-        groups: ['profile']
+        groups: ['default']
     )]
     #[Assert\Email(
         message: "Veuillez entrer une adresse email valide.",
-        groups: ['profile']
+        groups: ['default']
     )]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::STRING, length: 50, nullable: false, unique: true)]
-    #[Assert\NotBlank(groups: ['profile'])]
+    #[Assert\NotBlank(groups: ['default'])]
     #[Assert\Length(
         min: 3,
         max: 50,
         minMessage: "Votre nom d'utilisateur doit contenir au moins {{limit}} caractères.",
         maxMessage: "Votre nom d'utilisateur ne peut pas contenir plus de {{limit}} caractères.",
-        groups: ['profile']
+        groups: ['default']
     )]
     #[Assert\Regex(
         pattern: "/^[a-zA-Z0-9_-]+$/",
@@ -58,12 +58,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var list<string> The user roles
      */
     #[ORM\Column(type: Types::JSON)]
-    #[Assert\NotBlank(message: "L'utilisateur doit avoir au moins un rôle.", groups: ['profile'])]
+    #[Assert\NotBlank(message: "L'utilisateur doit avoir au moins un rôle.", groups: ['default'])]
     #[Assert\All([
         new Assert\Choice(
             choices: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN'],
             message: "Choisissez un rôle valide.",
-            groups: ['profile']
+            groups: ['default']
         )
     ])]
     private array $roles = ['ROLE_USER'];
