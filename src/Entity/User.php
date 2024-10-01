@@ -71,9 +71,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
+    #[ORM\Column(type: Types::STRING, length: 255,nullable: false)]
     private ?string $password = null;
 
-    #[ORM\Column(type: Types::STRING, length: 255,nullable: false)]
     #[Assert\NotBlank(groups: ['password'])]
     #[Assert\Length(
         min: 8,

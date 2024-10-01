@@ -15,12 +15,12 @@ class AppFixtures extends Fixture
             $user = new User();
             if ( $i % 2 === 0){
                 $user->setEmail('admin' . $i . '@email.com')
-                ->setPlainPassword('Pas$word1')
+                ->setPassword('Pas$word1')
                 ->setUsername('Admin' . $i)
                 ->setRoles(['ROLE_ADMIN']);
             } else {
                 $user->setEmail('user' . $i . '@email.com')
-                ->setPlainPassword('Pas$word1')
+                ->setPassword('Pas$word1')
                 ->setUsername('User' . $i)
                 ->setRoles(['ROLE_USER']);
             }
