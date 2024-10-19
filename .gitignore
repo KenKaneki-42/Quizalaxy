@@ -1,8 +1,11 @@
+/.vscode/
 
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
 /.env.*.local
+/.env.test
+/.env
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
